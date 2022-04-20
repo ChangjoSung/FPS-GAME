@@ -34,10 +34,11 @@ public class PlayCtr : MonoBehaviour
         
         //-------------ROTATE
         float r = Input.GetAxis("Mouse X");
+        
 
         //축*회전속도*프레임
-        Vector3 rot = Vector3.up*r;
-        tf.Rotate(rot*RotateSpeed*Time.deltaTime);
+        Vector3 rotX = Vector3.up*r;
+        tf.Rotate(rotX*RotateSpeed*Time.deltaTime);
     
         AnimationClip(h,v);
     }
