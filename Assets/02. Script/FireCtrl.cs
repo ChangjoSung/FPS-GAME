@@ -6,11 +6,7 @@ public class FireCtrl : MonoBehaviour
 {
     public GameObject bullet;
     public Transform FirePos;
-    void Start()
-    {
-
-    }
-
+    
     
     void Update()
     {

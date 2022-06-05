@@ -5,14 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Shootable
+  - Bullet
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - BARREL
   - Water
   - UI
-  - 
+  - PLAYER
   - 
   - Lighting
   - Ground

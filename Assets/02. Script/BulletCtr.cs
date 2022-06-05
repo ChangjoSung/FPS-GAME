@@ -9,11 +9,14 @@ public class BulletCtr : MonoBehaviour
     public float Damage;
     
     Rigidbody rigid;
+    Transform tr;
+    
     void Start()
     {
         rigid = GetComponent<Rigidbody>();
+        tr = GetComponent<Transform>();
         
-        rigid.AddForce(bulletSpeed * transform.forward);
+        rigid.AddForce(bulletSpeed * tr.forward);
     }
 
     
