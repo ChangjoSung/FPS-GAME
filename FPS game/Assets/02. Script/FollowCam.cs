@@ -27,10 +27,10 @@ public class FollowCam : MonoBehaviour
     void LateUpdate() //카메라는 LateUpdate
     {
         //카메라 위치 Vector 저장
-        Vector3 pos = targetTf.position + (-targetTf.forward*distance)+(height*Vector3.up);
+        CamTf.position = targetTf.position + (-targetTf.forward*distance)+(height*Vector3.up);
 
         //보간함수 (부드럽게)
-        CamTf.position = Vector3.SmoothDamp(CamTf.position,pos,ref veclocity,time);
+        //CamTf.position = Vector3.SmoothDamp(CamTf.position,pos,ref veclocity,time);
 
         //LookAt
         CamTf.LookAt(targetTf.position + (Vector3.up * 2.0f));
