@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class PlayCtr : MonoBehaviour
 {
-    
-
     public float MoveSpeed;
     public float RotateSpeed = 30.0f;
 
 
-    
     Transform tf; //선언해주면 GetComponent 무조건 선언
     Animation anim;
 
@@ -32,7 +29,8 @@ public class PlayCtr : MonoBehaviour
         //-------------MOVE
         float h = Input.GetAxis("Horizontal"); //왼 오 
         float v = Input.GetAxis("Vertical"); //위 아래
-
+         
+        
         //방향*속도*프레임 
         Vector3 MoveDir = (Vector3.forward*v) + (Vector3.right*h);
         tf.Translate(MoveDir.normalized * MoveSpeed * Time.deltaTime);
@@ -50,6 +48,8 @@ public class PlayCtr : MonoBehaviour
 
     void AnimationClip(float h, float v)
     {
+        
+        
         //키보드 입력에 따른 애니메이션 효과
         if(v >= 0.1f)
         {

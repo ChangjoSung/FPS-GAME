@@ -11,17 +11,18 @@ public class FireCtrl : MonoBehaviour
     public AudioClip fireSound;
     private new AudioSource audio;
     private MeshRenderer flash;
+
+    
     
     private void Start() {
         audio = GetComponent<AudioSource>();
         flash = FirePos.GetComponentInChildren<MeshRenderer>();
-
+        
         flash.enabled = false;
     }
     
     void Update()
     {
-        
         if(Input.GetMouseButtonDown(0))
         {
             Fire();

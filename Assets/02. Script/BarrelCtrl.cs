@@ -7,6 +7,8 @@ public class BarrelCtrl : MonoBehaviour
 {
     public GameObject ExpEffect;
     public Texture[] textures;
+    public AudioClip BarrelaudioClip;
+    private new AudioSource audio;
 
     new MeshRenderer renderer;
     Rigidbody rb;
@@ -20,10 +22,12 @@ public class BarrelCtrl : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         tr = GetComponent<Transform>();
         renderer = GetComponentInChildren<MeshRenderer>();
+        audio = GetComponent<AudioSource>();
 
         int index = Random.Range(0, textures.Length);
         renderer.material.mainTexture = textures[index];
 
+        
     }
 
     void OnCollisionEnter(Collision other) 
@@ -40,7 +44,7 @@ public class BarrelCtrl : MonoBehaviour
             BarrelsExp();
 
             playerBarrelDamaged();
-            //Destroy(gameObject,3.0f);
+            
             
         }    
     }
@@ -60,6 +64,8 @@ public class BarrelCtrl : MonoBehaviour
 
             rb.AddExplosionForce(1500.0f,tr.position,radius,1200.0f);
 
+            audio.PlayOneShot(BarrelaudioClip,1.0f);
+
             Destroy(col.gameObject,3.0f);
         }
     }
@@ -75,5 +81,6 @@ public class BarrelCtrl : MonoBehaviour
             rb.AddExplosionForce(1500.0f,tr.position,radius,1200.0f);
         }
     }
+    
     
 }
