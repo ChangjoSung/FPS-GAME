@@ -7,19 +7,23 @@ public class PlayCtr : MonoBehaviour
     
 
     public float MoveSpeed;
-    public float RotateSpeed;
+    public float RotateSpeed = 30.0f;
 
 
     
     Transform tf; //선언해주면 GetComponent 무조건 선언
     Animation anim;
 
-    void Start()
+    IEnumerator Start()
     {
         tf = GetComponent<Transform>();
         anim = GetComponent<Animation>();
 
         anim.Play("Idle");
+
+        RotateSpeed = 0.0f;
+        yield return new WaitForSeconds(0.3f);
+        RotateSpeed = 30.0f;
     }
 
     

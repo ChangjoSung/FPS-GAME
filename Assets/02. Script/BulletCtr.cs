@@ -5,11 +5,14 @@ using UnityEngine;
 public class BulletCtr : MonoBehaviour
 {
     public float bulletSpeed;
-
     public float Damage;
+    
+    
     
     Rigidbody rigid;
     Transform tr;
+
+    
     
     void Start()
     {
@@ -17,6 +20,7 @@ public class BulletCtr : MonoBehaviour
         tr = GetComponent<Transform>();
         
         rigid.AddForce(bulletSpeed * tr.forward);
+
     }
 
     

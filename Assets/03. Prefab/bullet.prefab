@@ -111,7 +111,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9166981231703877866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 7.42, z: 18.45}
+  m_LocalPosition: {x: -9.86, y: 7.42, z: 18.45}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea2aed79fdeeeb4196eded80518c5fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 1000
+  bulletSpeed: 3000
   Damage: 20
 --- !u!135 &1348944913452120298
 SphereCollider:
@@ -212,7 +212,7 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.003818512
+        time: 0
         value: 0
         inSlope: 0
         outSlope: 0
@@ -221,8 +221,8 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.32282487
-        value: 0.23558116
+        time: 0.25583452
+        value: 0.08805803
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -230,7 +230,7 @@ TrailRenderer:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.69157106
+        time: 0.62849164
         value: 0
         inSlope: 0
         outSlope: 0
