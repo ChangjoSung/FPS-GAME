@@ -29,7 +29,7 @@ public class PlayCtr : MonoBehaviour
         //-------------MOVE
         float h = Input.GetAxis("Horizontal"); //왼 오 
         float v = Input.GetAxis("Vertical"); //위 아래
-         
+        
         
         //방향*속도*프레임 
         Vector3 MoveDir = (Vector3.forward*v) + (Vector3.right*h);
@@ -71,9 +71,36 @@ public class PlayCtr : MonoBehaviour
             anim.CrossFade("RunL",0.25f);
         }
 
+        else if(h == 0.0f && v==0.0f)
+        {
+            StartCoroutine(IdleAction());
+        }
+
         else
         {
             anim.CrossFade("Idle",0.25f);
         }
     }
+
+    IEnumerator IdleAction()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            anim.CrossFade("IdleFireSMG",0.25f);
+            yield return new WaitForSeconds(0.2f);
+            anim.CrossFade("Idle",0.25f);
+        }
+
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            Debug.Log("Reload");
+            
+            anim.CrossFade("IdleReloadSMG",0.25f);
+            yield return new WaitForSeconds(1.2f);
+            anim.CrossFade("Idle",0.25f);
+        }
+    }
+
+    
+    
 }
