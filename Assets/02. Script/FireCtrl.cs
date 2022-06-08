@@ -7,7 +7,7 @@ public class FireCtrl : MonoBehaviour
 {
     public GameObject bullet;
     public Transform FirePos;
-    public Animation anim;
+    
     
     public AudioClip fireSound;
     private new AudioSource audio;
@@ -18,7 +18,7 @@ public class FireCtrl : MonoBehaviour
     private void Start() {
         audio = GetComponent<AudioSource>();
         flash = FirePos.GetComponentInChildren<MeshRenderer>();
-        anim = GetComponent<Animation>();
+        
         
         flash.enabled = false;
     }
@@ -27,12 +27,11 @@ public class FireCtrl : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            
             Fire();
         }
     }
 
-    void Fire() 
+    public void Fire() 
     {
         Instantiate(bullet, FirePos.position, FirePos.rotation);
         audio.PlayOneShot(fireSound,1.0f);
