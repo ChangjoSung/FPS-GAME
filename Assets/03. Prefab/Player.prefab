@@ -1141,7 +1141,6 @@ Animation:
   - {fileID: 7400000, guid: 185c4b4f1e1c1441d920959e7dee49a5, type: 2}
   - {fileID: 7400000, guid: 9268e98fb6cf94b7680e3c72e7e3f7af, type: 2}
   - {fileID: 7400000, guid: 490e214aa41ee4896b152dcb101f1b55, type: 2}
-  - {fileID: 7400000, guid: 6224bc0a21c1046ceb676a4246d50da8, type: 2}
   - {fileID: 7400000, guid: 52726528637b14f8586ef4583b34b790, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
@@ -1161,6 +1160,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 8
   RotateSpeed: 30
+  bulletsUI:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Reload: {fileID: 8300000, guid: fadf80bb36a4b4b11956cd0e19f9a859, type: 3}
 --- !u!205 &8516500448824968121
 LODGroup:
   m_ObjectHideFlags: 0
@@ -1328,7 +1359,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 9166981231703877866, guid: 717164c8b663dfb47b9b720e3321af9f, type: 3}
   FirePos: {fileID: 1930987153}
-  anim: {fileID: 0}
   fireSound: {fileID: 8300000, guid: 641ff25f5da444ddf8874d961a56f0c9, type: 3}
 --- !u!1 &8516500448825001329
 GameObject:
