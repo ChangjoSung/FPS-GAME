@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayCtr : MonoBehaviour
 {
-    public float MoveSpeed = 8.0f;
+    public float MoveSpeed;
     public float RotateSpeed = 30.0f;
 
     
@@ -65,6 +65,8 @@ public class PlayCtr : MonoBehaviour
 
         //달리면서 총쏘기 행동
         StartCoroutine(RunFireAction());
+
+        
 
         //키보드 입력에 따른 애니메이션 효과
         AnimationClip(h,v);
@@ -156,7 +158,8 @@ public class PlayCtr : MonoBehaviour
     
     
     IEnumerator IdleReloadAction()
-    {    //멈춘 다음 재장전 행동
+    {    
+        //멈춘 다음 재장전 행동
         if(Input.GetKeyDown(KeyCode.R))
         {
             StartCoroutine(ReLoadBulletUI());
@@ -164,7 +167,8 @@ public class PlayCtr : MonoBehaviour
             audio.PlayOneShot(Reload,1.0f);
             anim.CrossFade("IdleReloadSMG",0.25f);
             
-            yield return new WaitForSeconds(1.2f);
+            yield return new WaitForSeconds(0.5f);
+            
             anim.CrossFade("Idle",0.25f);
         }
     }
@@ -181,8 +185,8 @@ public class PlayCtr : MonoBehaviour
         }
 
         bullet = 29;
-        
     }
 
     
 }
+    
