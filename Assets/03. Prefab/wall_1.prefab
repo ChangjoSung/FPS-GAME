@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1634643627666895338}
   - component: {fileID: 1634643627666895333}
   - component: {fileID: 1634643627666895332}
-  - component: {fileID: 728646884812775067}
-  m_Layer: 0
+  - component: {fileID: 1235890508}
+  m_Layer: 11
   m_Name: wall_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634643627666895335}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &728646884812775067
+--- !u!114 &1235890508
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,5 +110,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b765f9342d6409e47a5bfd9918875777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SparkEffect: {fileID: 1000011945391522, guid: 78b71003e8b357d4bbf89c8b5e5e4f0e,
-    type: 3}

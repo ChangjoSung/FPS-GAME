@@ -20,6 +20,8 @@ public class CameraCtr : MonoBehaviour
     {
         CameraTr.position = Target.position + (-Vector3.forward*x)+(Vector3.up*y);
 
+        
+
         CameraTr.LookAt(Target.position); 
     }
 }

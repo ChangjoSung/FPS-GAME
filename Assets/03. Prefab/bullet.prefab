@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3968293103118854066}
   - component: {fileID: 3968293103122278290}
   - component: {fileID: 3968293103121278290}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: lowpolybullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 1348944913452120299}
   - component: {fileID: 1348944913452120298}
   - component: {fileID: 7471736606688644362}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: bullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -149,6 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 3000
   Damage: 20
+  ExpEffect: {fileID: 0}
 --- !u!135 &1348944913452120298
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -213,7 +214,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.25949097
+        value: 0.41975403
         inSlope: 0
         outSlope: 0
         tangentMode: 0

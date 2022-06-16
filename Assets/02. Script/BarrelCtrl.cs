@@ -26,8 +26,7 @@ public class BarrelCtrl : MonoBehaviour
 
         int index = Random.Range(0, textures.Length);
         renderer.material.mainTexture = textures[index];
-
-        
+    
     }
 
     void OnCollisionEnter(Collision other) 
@@ -45,10 +44,10 @@ public class BarrelCtrl : MonoBehaviour
 
             playerBarrelDamaged();
             
-            
+            Destroy(other.gameObject);
         }    
     }
-
+    
     
     void BarrelsExp()
     {

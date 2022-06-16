@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class PlayCtr : MonoBehaviour
 {
-    public float MoveSpeed;
-    public float RotateSpeed = 30.0f;
-
     
     int bullet = 29;
     public GameObject[] bulletsUI;
@@ -33,9 +30,9 @@ public class PlayCtr : MonoBehaviour
 
         anim.Play("Idle");
 
-        RotateSpeed = 0.0f;
+        PlayerStat.RotateSpeed = 0.0f;
         yield return new WaitForSeconds(0.3f);
-        RotateSpeed = 30.0f;
+        PlayerStat.RotateSpeed = 30.0f;
     }
 
     
@@ -49,7 +46,7 @@ public class PlayCtr : MonoBehaviour
         
         //방향*속도*프레임 
         Vector3 MoveDir = (Vector3.forward*v) + (Vector3.right*h);
-        tf.Translate(MoveDir.normalized * MoveSpeed * Time.deltaTime);
+        tf.Translate(MoveDir.normalized * PlayerStat.MoveSpeed * Time.deltaTime);
         
         //-------------ROTATE
         float r = Input.GetAxis("Mouse X");
@@ -57,7 +54,7 @@ public class PlayCtr : MonoBehaviour
         
         //축*회전속도*프레임
         Vector3 rotX = Vector3.up*r;
-        tf.Rotate(rotX*RotateSpeed*Time.deltaTime);
+        tf.Rotate(rotX* PlayerStat.RotateSpeed*Time.deltaTime);
         
     
         //스프린트 행동
@@ -99,7 +96,7 @@ public class PlayCtr : MonoBehaviour
         {
             // sprint 후 멈추면 세팅 초기화
             Issprint = false;
-            MoveSpeed = 8.0f;
+            PlayerStat.MoveSpeed = 8.0f;
             fireCtrl.enabled = true;
             i = 1;
             
@@ -120,14 +117,14 @@ public class PlayCtr : MonoBehaviour
             if(i%2 == 1) //스프린트
             {
                 Issprint = true;
-                MoveSpeed = 13.0f;
+                PlayerStat.MoveSpeed = 13.0f;
                 fireCtrl.enabled = false;
             }
             
             else if(i%2 == 0) // 뛰기
             {
                 Issprint = false;
-                MoveSpeed = 8.0f;
+                PlayerStat.MoveSpeed = 8.0f;
                 fireCtrl.enabled = true;
             }
                 

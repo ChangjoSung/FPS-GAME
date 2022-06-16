@@ -6,7 +6,10 @@ using UnityEngine;
 public class FireCtrl : MonoBehaviour
 {
     public GameObject bullet;
+    
+    
     public Transform FirePos;
+    
     
     
     public AudioClip fireSound;

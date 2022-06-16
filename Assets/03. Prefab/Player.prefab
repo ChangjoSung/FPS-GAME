@@ -951,9 +951,10 @@ GameObject:
   - component: {fileID: 7153742978604235795}
   - component: {fileID: 7153742978604235790}
   - component: {fileID: 7153742978604235799}
+  - component: {fileID: 1546849441398039833}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1013,8 +1014,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8376e9bcefc6ef4ba295199fb8c9f95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 0
-  RotateSpeed: 30
   bulletsUI:
   - {fileID: 0}
   - {fileID: 0}
@@ -1088,7 +1087,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!136 &7153742978604235795
 CapsuleCollider:
@@ -1215,6 +1214,18 @@ MonoBehaviour:
   bullet: {fileID: 9166981231703877866, guid: 717164c8b663dfb47b9b720e3321af9f, type: 3}
   FirePos: {fileID: 7153742978884425646}
   fireSound: {fileID: 8300000, guid: 641ff25f5da444ddf8874d961a56f0c9, type: 3}
+--- !u!114 &1546849441398039833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546849441345573968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1514512dbf9e67549a3b51c71d1af957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1546849441345573970
 GameObject:
   m_ObjectHideFlags: 0
@@ -1627,7 +1638,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7153742978884425647}
   m_LocalRotation: {x: 0.04881895, y: -0.01562335, z: 0.010268716, w: 0.99863267}
-  m_LocalPosition: {x: -0.1556001, y: 0.07230012, z: 0.8783002}
+  m_LocalPosition: {x: -0.1536, y: 0.0718, z: 0.9004}
   m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

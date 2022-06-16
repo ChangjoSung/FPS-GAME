@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Shootable
   - Bullet
+  - ENEMY
+  - EBullet
+  - Barrel
   layers:
   - Default
   - TransparentFX
@@ -14,13 +17,13 @@ TagManager:
   - Water
   - UI
   - PLAYER
-  - 
+  - ENEMY
   - Lighting
   - Ground
   - Postprocessing
-  - 
-  - 
-  - 
+  - WALL
+  - BULLET
+  - EBULLET
   - 
   - 
   - 
