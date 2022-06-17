@@ -845,7 +845,6 @@ GameObject:
   - component: {fileID: 309668673020802418}
   - component: {fileID: 5957143901554175752}
   - component: {fileID: 1545422543834620755}
-  - component: {fileID: 4214691605741763913}
   - component: {fileID: -2058520594852041905}
   - component: {fileID: 1989789182}
   - component: {fileID: 5161584053480760707}
@@ -865,7 +864,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083109838890266568}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.272, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -911,26 +910,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: 0
-  IsDie: 0
   IdieGun: {fileID: 9204287520261263000}
   GunHoldGun: {fileID: 9204287520417219173}
-  fireSound: {fileID: 8300000, guid: 3988c7241ff434c2a900f22726ee7a08, type: 3}
-  fireTime: 0
---- !u!114 &4214691605741763913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1083109838890266568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71c3431eab54908458ac94cd36212182, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   EnemyBullet: {fileID: 9166981231703877866, guid: 60008c3f639b09f4b97b01ccaf3daf9b,
     type: 3}
   EnemyFirePos: {fileID: 5427988760255680961}
+  fireSound: {fileID: 8300000, guid: 3988c7241ff434c2a900f22726ee7a08, type: 3}
+  AnimTime: 0
+  fireTime: 0
+  IsDie: 0
 --- !u!82 &-2058520594852041905
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1041,7 +1029,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

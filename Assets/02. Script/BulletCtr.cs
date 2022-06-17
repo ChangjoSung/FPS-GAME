@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class BulletCtr : MonoBehaviour
 {
-    public float bulletSpeed;
-    public float Damage;
-    public GameObject ExpEffect;
-    
     Rigidbody rigid;
     Transform tr;
 
@@ -19,12 +15,11 @@ public class BulletCtr : MonoBehaviour
         tr = GetComponent<Transform>();
         BC = GetComponent<BarrelCtrl>();
         
-        rigid.AddForce(bulletSpeed * tr.forward);
-
         Destroy(this.gameObject,10.0f);
     }
 
-    void OnCollisionEnter(Collision other) 
+
+    void OnTriggerEnter(Collider other) 
     {
         switch (other.gameObject.tag)
         {

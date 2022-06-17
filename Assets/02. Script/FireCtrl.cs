@@ -6,12 +6,7 @@ using UnityEngine;
 public class FireCtrl : MonoBehaviour
 {
     public GameObject bullet;
-    
-    
     public Transform FirePos;
-    
-    
-    
     public AudioClip fireSound;
     private new AudioSource audio;
     private MeshRenderer flash;
@@ -36,7 +31,10 @@ public class FireCtrl : MonoBehaviour
 
     public void Fire() 
     {
-        Instantiate(bullet, FirePos.position, FirePos.rotation);
+        GameObject bulletPrefab = Instantiate(bullet, FirePos.position, FirePos.rotation);
+        Rigidbody rigid = bulletPrefab.GetComponent<Rigidbody>();
+        rigid.velocity = FirePos.forward * 50;  
+
         audio.PlayOneShot(fireSound,1.0f);
         StartCoroutine(showflash());
     }

@@ -5,101 +5,115 @@ using UnityEngine.UI;
 
 public class PlayCtr : MonoBehaviour
 {
-    
-    int bullet = 29;
     public GameObject[] bulletsUI;
     
     public AudioClip Reload;
     private new AudioSource audio;
-
-
     Transform tf; //선언해주면 GetComponent 무조건 선언
+    Rigidbody rg;
     Animation anim;
     FireCtrl fireCtrl;
 
     //sprint 여부 
-    bool Issprint;
-    int i = 1; // 홀수 = 스프린트 , 짝수 = 뛰어가기
+    public bool Issprint;
+    bool sprintButton;
+    bool FireButton;
+    bool ReloadButton;
+    
+    public float MoveSpeed;
+    public float RotateSpeed;
+    float hAxis;
+    float vAxis;
+    float rAxis;
 
+    
+    int bulletindex = 29;
+
+    Vector3 moveVec;
+    Vector3 rotX;
+    
     IEnumerator Start()
     {
         tf = GetComponent<Transform>();
+        rg = GetComponent<Rigidbody>();
         anim = GetComponent<Animation>();
         fireCtrl = GetComponent<FireCtrl>();
         audio = GetComponent<AudioSource>();
 
         anim.Play("Idle");
 
-        PlayerStat.RotateSpeed = 0.0f;
+        RotateSpeed = 0.0f;
         yield return new WaitForSeconds(0.3f);
-        PlayerStat.RotateSpeed = 30.0f;
+        RotateSpeed = 30.0f;
     }
 
     
     void Update()
     {
-        //-------------MOVE
-        float h = Input.GetAxis("Horizontal"); //왼 오 
-        float v = Input.GetAxis("Vertical"); //위 아래
+        inputKey();
         
+        Move();
         
+        turn();
         
-        //방향*속도*프레임 
-        Vector3 MoveDir = (Vector3.forward*v) + (Vector3.right*h);
-        tf.Translate(MoveDir.normalized * PlayerStat.MoveSpeed * Time.deltaTime);
+        //키보드 입력에 따른 애니메이션 효과
+        AnimationClip(hAxis,vAxis);
         
-        //-------------ROTATE
-        float r = Input.GetAxis("Mouse X");
-        
-        
-        //축*회전속도*프레임
-        Vector3 rotX = Vector3.up*r;
-        tf.Rotate(rotX* PlayerStat.RotateSpeed*Time.deltaTime);
-        
-    
         //스프린트 행동
-        StartCoroutine(SprintAction());
+        SprintAction();
 
         //달리면서 총쏘기 행동
-        StartCoroutine(RunFireAction());
-
-        
-
-        //키보드 입력에 따른 애니메이션 효과
-        AnimationClip(h,v);
+        RunFireAction();
     }
 
-    void AnimationClip(float h, float v)
+    void inputKey()
     {
-        if(v >= 0.1f)
+        vAxis = Input.GetAxis("Vertical"); //위 아래
+        hAxis = Input.GetAxis("Horizontal"); //왼 오 
+        rAxis = Input.GetAxis("Mouse X");
+        sprintButton = Input.GetButton("sprint");
+        FireButton = Input.GetButtonDown("Fire1");
+        ReloadButton = Input.GetButtonDown("Reload");
+    }
+    
+    void Move() 
+    {
+        moveVec = (Vector3.forward * vAxis) + (Vector3.right * hAxis);
+
+        transform.Translate(moveVec.normalized * MoveSpeed * (sprintButton ? 1.8f : 1.0f) * Time.deltaTime);
+    }
+
+    void turn()
+    {
+        rotX = Vector3.up* rAxis;
+        tf.Rotate(rotX* RotateSpeed*Time.deltaTime);
+    }
+    
+    void AnimationClip(float hAxis, float vAxis)
+    {
+        if(vAxis >= 0.1f)
         {
-            anim.CrossFade((Issprint == true) ? "SprintF" : "RunF", 0.25f);
+            anim.CrossFade((Issprint ? "SprintF" : "RunF"), 0.25f);
         }
 
-        else if (v <= -0.1f)
+        else if (vAxis <= -0.1f)
         {
             anim.CrossFade("RunB",0.25f);
         }
 
-        else if (h >= 0.1f)
+        else if (hAxis >= 0.1f)
         {
             anim.CrossFade("RunR",0.25f);
         }
 
-        else if (h <= -0.1f)
+        else if (hAxis <= -0.1f)
         {
             
             anim.CrossFade("RunL",0.25f);
         }
 
-        else if(h == 0.0f && v==0.0f)
+        else if(hAxis == 0.0f && vAxis == 0.0f)
         {
-            // sprint 후 멈추면 세팅 초기화
-            Issprint = false;
-            PlayerStat.MoveSpeed = 8.0f;
-            fireCtrl.enabled = true;
-            i = 1;
-            
             StartCoroutine(IdleReloadAction());
         }
 
@@ -110,54 +124,53 @@ public class PlayCtr : MonoBehaviour
     }
 
     //스프린트 행동
-    IEnumerator SprintAction()
+    void SprintAction()
     {
-        if(Input.GetKeyDown(KeyCode.LeftControl))
+        if(sprintButton && !Issprint && fireCtrl.enabled)
         {
-            if(i%2 == 1) //스프린트
-            {
-                Issprint = true;
-                PlayerStat.MoveSpeed = 13.0f;
-                fireCtrl.enabled = false;
-            }
-            
-            else if(i%2 == 0) // 뛰기
-            {
-                Issprint = false;
-                PlayerStat.MoveSpeed = 8.0f;
-                fireCtrl.enabled = true;
-            }
-                
-            i++;  //짝수 <-> 홀수 
+            Issprint = true;
+            fireCtrl.enabled = false;
 
-            yield return null; 
+            Invoke("SprintOut", 0.3f);
         }
+    }
+
+    void SprintOut()
+    {
+        Issprint = false;
+        fireCtrl.enabled = true;
     }
 
     //달리면서 총쏠때 총알 UI
-    IEnumerator RunFireAction()
+    void RunFireAction()
     {
-        if(Input.GetMouseButtonDown(0) && Issprint == false) 
+        if(FireButton && !Issprint && fireCtrl.enabled) 
         {
-            if(bullet < 0)
+            if(bulletindex < 0)
             {
                 fireCtrl.enabled = false;
-                bullet = 0;
-                yield return null;
+                bulletindex = 0;
             }
             
-            bulletsUI[bullet].SetActive(false);
-            bullet--;
-
-            yield return null;
+            bulletsUI[bulletindex].SetActive(false);
+            bulletindex--;
         }
     }
     
+    void freezeRotation()
+    {
+        rg.angularVelocity = Vector3.zero; //회전속도
+    }
+
+    void FixedUpdate() 
+    {
+        freezeRotation();    
+    }
     
     IEnumerator IdleReloadAction()
     {    
         //멈춘 다음 재장전 행동
-        if(Input.GetKeyDown(KeyCode.R))
+        if(ReloadButton)
         {
             StartCoroutine(ReLoadBulletUI());
             
@@ -174,14 +187,14 @@ public class PlayCtr : MonoBehaviour
     //총알 UI 재장전    
     IEnumerator ReLoadBulletUI()
     {
-        for(bullet = 0; bullet < 30; bullet++)
+        for(bulletindex = 0; bulletindex < 30; bulletindex++)
         {
-            bulletsUI[bullet].SetActive(true);
+            bulletsUI[bulletindex].SetActive(true);
             
             yield return new WaitForSeconds(0.01f);
         }
-
-        bullet = 29;
+        fireCtrl.enabled = true;
+        bulletindex = 29;
     }
 
     

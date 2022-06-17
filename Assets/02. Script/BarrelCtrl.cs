@@ -29,26 +29,42 @@ public class BarrelCtrl : MonoBehaviour
     
     }
 
-    void OnCollisionEnter(Collision other) 
+    void OnTriggerEnter(Collider other) 
     {
-        if(other.collider.CompareTag("Bullet"))
+        switch (other.gameObject.tag)
         {
-            ContactPoint cp = other.GetContact(0);
-            Quaternion rot = Quaternion.LookRotation(-cp.normal);
+            case "Bullet" :
+            {
+                Contact(other);
+                Debug.Log("bang");
+                
+                break;
+            }
 
-            GameObject exp = Instantiate(ExpEffect, cp.point, rot);
+            case "EBullet":
+            {
+                Contact(other);
+                
+                break;
+            }
 
-            Destroy(exp,2.0f);
-
-            BarrelsExp();
-
-            playerBarrelDamaged();
-            
-            Destroy(other.gameObject);
-        }    
+        }
+        
+          
     }
     
-    
+    public void Contact(Collider other)
+    {
+        GameObject exp = Instantiate(ExpEffect, tr.position , tr.rotation);
+        Destroy(exp,2.0f);
+
+        BarrelsExp();
+
+        playerBarrelDamaged();
+        
+        Destroy(other.gameObject);
+    }
+
     void BarrelsExp()
     {
         Collider[] cols = Physics.OverlapSphere(tr.position , radius, 1<<3);
