@@ -30,7 +30,7 @@ public class RandomObject : MonoBehaviour
     {
         if(Spontime >= 5.0f)
         {
-            Vector3 EnemyVec = new Vector3(Random.Range(-240,240),0,Random.Range(-240,240));
+            Vector3 EnemyVec = new Vector3(Random.Range(-80,80),0,Random.Range(-80,80));
             Instantiate(Enemy,EnemyVec,Quaternion.identity);
 
             Spontime = 0.0f;
@@ -42,7 +42,7 @@ public class RandomObject : MonoBehaviour
     {
         for(int i = 1; i <= 30; i++)
         {
-            Vector3 vec = new Vector3(Random.Range(-240,240),0,Random.Range(-240,240));
+            Vector3 vec = new Vector3(Random.Range(-80,80),0,Random.Range(-80,80));
 
             Instantiate(Barrel,vec,Quaternion.identity);
 

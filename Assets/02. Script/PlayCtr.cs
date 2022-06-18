@@ -19,6 +19,7 @@ public class PlayCtr : MonoBehaviour
     bool sprintButton;
     bool FireButton;
     bool ReloadButton;
+    bool IsBorder;
     
     public float MoveSpeed;
     public float RotateSpeed;
@@ -80,7 +81,10 @@ public class PlayCtr : MonoBehaviour
     {
         moveVec = (Vector3.forward * vAxis) + (Vector3.right * hAxis);
 
-        transform.Translate(moveVec.normalized * MoveSpeed * (sprintButton ? 1.8f : 1.0f) * Time.deltaTime);
+        if(!IsBorder)
+        {
+            transform.Translate(moveVec.normalized * MoveSpeed * (sprintButton ? 1.5f : 1.0f) * Time.deltaTime);
+        }
     }
 
     void turn()
@@ -157,6 +161,13 @@ public class PlayCtr : MonoBehaviour
         }
     }
     
+    void StopTowall()
+    {
+        Debug.DrawRay(tf.position, tf.forward*5, Color.green);
+        IsBorder = Physics.Raycast(tf.position, tf.forward, 5, LayerMask.GetMask("WALL")); //Ray를 쏘아 닿는 오브젝트를 감지하는 함수
+
+    }
+
     void freezeRotation()
     {
         rg.angularVelocity = Vector3.zero; //회전속도
@@ -164,7 +175,8 @@ public class PlayCtr : MonoBehaviour
 
     void FixedUpdate() 
     {
-        freezeRotation();    
+        freezeRotation();
+        StopTowall();    
     }
     
     IEnumerator IdleReloadAction()

@@ -822,7 +822,7 @@ PrefabInstance:
     - target: {fileID: 2068216335628924578, guid: 21ce0f011bf59054faa78e741146ffc5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -249.35815
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 2068216335628924578, guid: 21ce0f011bf59054faa78e741146ffc5,
         type: 3}
@@ -2049,7 +2049,7 @@ Transform:
   m_GameObject: {fileID: 1251458316}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 50, y: 1, z: 50}
+  m_LocalScale: {x: 20, y: 1, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 387971588}
@@ -2178,7 +2178,7 @@ RectTransform:
   m_GameObject: {fileID: 1594771697}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 455949205}
@@ -2216,7 +2216,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 121, y: 119}
+  m_AnchoredPosition: {x: 90, y: 100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1602679263
@@ -3160,7 +3160,7 @@ PrefabInstance:
     - target: {fileID: 1634643627666895339, guid: dc733e63aa687b745abc8919be14746d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 249.2977
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1634643627666895339, guid: dc733e63aa687b745abc8919be14746d,
         type: 3}
@@ -3464,37 +3464,37 @@ PrefabInstance:
     - target: {fileID: 7153742978884425646, guid: 0d3a2a3d0c6b53b45ab071dc91f02fd3,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.98782504
+      value: 0.9845891
       objectReference: {fileID: 0}
     - target: {fileID: 7153742978884425646, guid: 0d3a2a3d0c6b53b45ab071dc91f02fd3,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.02938112
+      value: 0.044059128
       objectReference: {fileID: 0}
     - target: {fileID: 7153742978884425646, guid: 0d3a2a3d0c6b53b45ab071dc91f02fd3,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.03987692
+      value: -0.03580768
       objectReference: {fileID: 0}
     - target: {fileID: 7153742978884425646, guid: 0d3a2a3d0c6b53b45ab071dc91f02fd3,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.14747268
+      value: 0.16541167
       objectReference: {fileID: 0}
     - target: {fileID: 7153742978884425646, guid: 0d3a2a3d0c6b53b45ab071dc91f02fd3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 4.003
+      value: 5.659
       objectReference: {fileID: 0}
     - target: {fileID: 7153742978884425646, guid: 0d3a2a3d0c6b53b45ab071dc91f02fd3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -4.031
+      value: -3.222
       objectReference: {fileID: 0}
     - target: {fileID: 7153742978884425646, guid: 0d3a2a3d0c6b53b45ab071dc91f02fd3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 16.841
+      value: 18.914
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d3a2a3d0c6b53b45ab071dc91f02fd3, type: 3}
@@ -3518,7 +3518,7 @@ PrefabInstance:
     - target: {fileID: 4963429232484644749, guid: 5775ac92f92e0d54cb237d4da9c0b149,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -249.51949
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 4963429232484644749, guid: 5775ac92f92e0d54cb237d4da9c0b149,
         type: 3}
@@ -3582,7 +3582,7 @@ PrefabInstance:
     - target: {fileID: 8737403921128416433, guid: 25ac9ad59e7412649974d00993151327,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 249.5396
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8737403921128416433, guid: 25ac9ad59e7412649974d00993151327,
         type: 3}

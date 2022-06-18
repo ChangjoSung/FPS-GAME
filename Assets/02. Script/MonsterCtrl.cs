@@ -160,7 +160,7 @@ public class MonsterCtrl : MonoBehaviour
                 }
                 case Stats.FIRE:
                 {
-                    nav.speed = 4.0f;
+                    nav.speed = 2.0f;
                     
                     anim.SetBool("IsFire",true);
                     yield return new WaitForSeconds(0.3f);
