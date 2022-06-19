@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BulletCtr : MonoBehaviour
 {
+    
     Rigidbody rigid;
     Transform tr;
-
+    
+    MonsterCtrl monsterCtrl;
     BarrelCtrl BC;
 
     void Start()
@@ -14,6 +17,8 @@ public class BulletCtr : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         tr = GetComponent<Transform>();
         BC = GetComponent<BarrelCtrl>();
+        monsterCtrl = GetComponent<MonsterCtrl>();
+        
         
         Destroy(this.gameObject,10.0f);
     }
@@ -25,14 +30,15 @@ public class BulletCtr : MonoBehaviour
         {
             case "ENEMY":
             {
-                Debug.Log("적 피가 줄어듦");
+                monsterCtrl.MonsterHp -= PlayCtr.PlayerAttack;
+                
                 Destroy(this.gameObject);
                 break;
             }
 
             case "Player":
             {
-                Debug.Log("내 피가 줄어듦");
+                PlayCtr.nowHp -= MonsterCtrl.Attack; 
                 Destroy(this.gameObject);
                 break;
             }

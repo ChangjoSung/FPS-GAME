@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 
 public class BarrelCtrl : MonoBehaviour
@@ -9,12 +11,16 @@ public class BarrelCtrl : MonoBehaviour
     public Texture[] textures;
     public AudioClip BarrelaudioClip;
     private new AudioSource audio;
-
+    
+    
+    PlayCtr playCtr;
+    MonsterCtrl monsterCtrl;
     new MeshRenderer renderer;
     Rigidbody rb;
     Transform tr;
 
     float radius = 10.0f;
+    public float BarrelDam = 20.0f; 
 
 
     private void Start() 
@@ -23,6 +29,8 @@ public class BarrelCtrl : MonoBehaviour
         tr = GetComponent<Transform>();
         renderer = GetComponentInChildren<MeshRenderer>();
         audio = GetComponent<AudioSource>();
+        playCtr = GetComponent<PlayCtr>();
+        monsterCtrl = GetComponent<MonsterCtrl>();
 
         int index = Random.Range(0, textures.Length);
         renderer.material.mainTexture = textures[index];
@@ -60,14 +68,12 @@ public class BarrelCtrl : MonoBehaviour
 
         BarrelsExp();
 
-        playerBarrelDamaged();
-        
         Destroy(other.gameObject);
     }
 
     void BarrelsExp()
     {
-        Collider[] cols = Physics.OverlapSphere(tr.position , radius, 1<<3);
+        Collider[] cols = Physics.OverlapSphere(tr.position , radius, (1<<3 ));
 
         foreach(var col in cols) 
         {
@@ -79,23 +85,17 @@ public class BarrelCtrl : MonoBehaviour
 
             rb.AddExplosionForce(1500.0f,tr.position,radius,1200.0f);
 
+            //playCtr.PlayerHp -= BarrelDam;
+            
+            //monsterCtrl.MonsterHp -= BarrelDam;
+
             audio.PlayOneShot(BarrelaudioClip,1.0f);
 
             Destroy(col.gameObject,3.0f);
         }
     }
 
-    void playerBarrelDamaged()
-    {
-        Collider[] colls = Physics.OverlapSphere(tr.position,radius, 1<<6);
-
-        foreach(var coll in colls) 
-        {
-            rb = coll.GetComponent<Rigidbody>();
-            
-            rb.AddExplosionForce(1500.0f,tr.position,radius,1200.0f);
-        }
-    }
+    
     
     
 }

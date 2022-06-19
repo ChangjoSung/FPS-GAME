@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayCtr : MonoBehaviour
 {
     public GameObject[] bulletsUI;
+    Image Hpbar;
     
     public AudioClip Reload;
     private new AudioSource audio;
@@ -21,6 +22,9 @@ public class PlayCtr : MonoBehaviour
     bool ReloadButton;
     bool IsBorder;
     
+    public static float PlayerHp = 100;
+    public static float nowHp = 100;
+    public static float PlayerAttack = 20;
     public float MoveSpeed;
     public float RotateSpeed;
     float hAxis;
@@ -40,6 +44,7 @@ public class PlayCtr : MonoBehaviour
         anim = GetComponent<Animation>();
         fireCtrl = GetComponent<FireCtrl>();
         audio = GetComponent<AudioSource>();
+        Hpbar = GameObject.FindGameObjectWithTag("Hpbar")?.GetComponent<Image>();
 
         anim.Play("Idle");
 
@@ -65,6 +70,10 @@ public class PlayCtr : MonoBehaviour
 
         //달리면서 총쏘기 행동
         RunFireAction();
+
+        HPUI();
+        
+        Die();
     }
 
     void inputKey()
@@ -158,6 +167,18 @@ public class PlayCtr : MonoBehaviour
             
             bulletsUI[bulletindex].SetActive(false);
             bulletindex--;
+        }
+    }
+
+    void HPUI()
+    {
+        Hpbar.fillAmount = nowHp / PlayerHp;
+    }
+    void Die() 
+    {
+        if(PlayerHp <= 0)
+        {
+            Destroy(this.gameObject);
         }
     }
     

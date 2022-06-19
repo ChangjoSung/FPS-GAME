@@ -36,7 +36,8 @@ public class MonsterCtrl : MonoBehaviour
     float distance;  
     public float AnimTime = 0.0f;
     public float fireTime = 0.0f;
-
+    public float MonsterHp = 100.0f;
+    public static float Attack = 10.0f;
 
     public bool IsDie = false;
     
@@ -115,6 +116,11 @@ public class MonsterCtrl : MonoBehaviour
             {
                 stats = Stats.FIRE;
             }
+
+            if(MonsterHp <= 0)
+            {
+                stats = Stats.DIE;
+            }
         }
     }
 
@@ -170,6 +176,18 @@ public class MonsterCtrl : MonoBehaviour
                     fireTime = 0.0f;
                     break;
                 } 
+
+                case Stats.DIE:
+                {
+                    StopAllCoroutines();
+                    
+                    IsDie = true;
+                    anim.SetTrigger("Die");
+
+                    Destroy(this.gameObject,3.0f);
+                    
+                    break;
+                }
 
             }
 
