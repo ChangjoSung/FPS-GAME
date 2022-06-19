@@ -35,6 +35,8 @@ public class RandomObject : MonoBehaviour
 
             Spontime = 0.0f;
         }
+
+        
     }    
 
 

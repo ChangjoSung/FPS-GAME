@@ -44,7 +44,7 @@ public class BarrelCtrl : MonoBehaviour
             case "Bullet" :
             {
                 Contact(other);
-                Debug.Log("bang");
+                
                 
                 break;
             }
@@ -52,6 +52,7 @@ public class BarrelCtrl : MonoBehaviour
             case "EBullet":
             {
                 Contact(other);
+               
                 
                 break;
             }
@@ -73,7 +74,7 @@ public class BarrelCtrl : MonoBehaviour
 
     void BarrelsExp()
     {
-        Collider[] cols = Physics.OverlapSphere(tr.position , radius, (1<<3 ));
+        Collider[] cols = Physics.OverlapSphere(tr.position , radius, (1<<3));
 
         foreach(var col in cols) 
         {
@@ -85,15 +86,12 @@ public class BarrelCtrl : MonoBehaviour
 
             rb.AddExplosionForce(1500.0f,tr.position,radius,1200.0f);
 
-            //playCtr.PlayerHp -= BarrelDam;
-            
-            //monsterCtrl.MonsterHp -= BarrelDam;
-
-            audio.PlayOneShot(BarrelaudioClip,1.0f);
+            audio.PlayOneShot(BarrelaudioClip,0.3f);
 
             Destroy(col.gameObject,3.0f);
         }
     }
+
 
     
     

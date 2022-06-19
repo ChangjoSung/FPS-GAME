@@ -910,6 +910,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: 0
+  Ifplayer: {fileID: 4984206565745865212, guid: 84a356e461a2fe147869770b69cb7eb0,
+    type: 3}
   IdieGun: {fileID: 9204287520261263000}
   GunHoldGun: {fileID: 9204287520417219173}
   EnemyBullet: {fileID: 9166981231703877866, guid: 60008c3f639b09f4b97b01ccaf3daf9b,
@@ -918,6 +920,8 @@ MonoBehaviour:
   fireSound: {fileID: 8300000, guid: 3988c7241ff434c2a900f22726ee7a08, type: 3}
   AnimTime: 0
   fireTime: 0
+  MonsterHp: 100
+  nowMonHp: 0
   IsDie: 0
 --- !u!82 &-2058520594852041905
 AudioSource:

@@ -15,6 +15,7 @@ public class MonsterCtrl : MonoBehaviour
     }
     public Stats stats = Stats.IDLE;
 
+    
     public GameObject IdieGun;
     public GameObject GunHoldGun;
     public GameObject EnemyBullet;
@@ -33,10 +34,11 @@ public class MonsterCtrl : MonoBehaviour
     
   
 
-    float distance;  
+      
     public float AnimTime = 0.0f;
     public float fireTime = 0.0f;
     public float MonsterHp = 100.0f;
+    public float nowMonHp;
     public static float Attack = 10.0f;
 
     public bool IsDie = false;
@@ -52,7 +54,7 @@ public class MonsterCtrl : MonoBehaviour
         audio = GetComponent<AudioSource>();
         Eflash = EnemyFirePos.GetComponentInChildren<MeshRenderer>();
         nav = GetComponent<NavMeshAgent>();
-        PlayerTr = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        PlayerTr = GameObject.FindWithTag("Player").GetComponent<Transform>();
         
         Eflash.enabled = false;
         
@@ -73,12 +75,31 @@ public class MonsterCtrl : MonoBehaviour
         {
             fireTime += Time.deltaTime;
         }
+
+        
     }
 
-    void Destination()
+    void OnEnable() 
     {
-        distance = Vector3.Distance(PlayerTr.position, this.transform.position); 
+        PlayCtr.OnPlayerDie += this.OnPlayerDie;    
     }
+    
+    void OnDisable() 
+    {
+        PlayCtr.OnPlayerDie -= this.OnPlayerDie;    
+    }
+
+    void OnPlayerDie()
+    {
+        StopAllCoroutines();
+
+        nav.isStopped = true;
+        
+        
+        anim.SetTrigger("PlayerDie");
+    }
+
+    
 
     void EnemyFire()
     {
@@ -180,9 +201,12 @@ public class MonsterCtrl : MonoBehaviour
                 case Stats.DIE:
                 {
                     StopAllCoroutines();
+                    nav.isStopped = true;
                     
                     IsDie = true;
                     anim.SetTrigger("Die");
+
+                    GetComponent<CapsuleCollider>().enabled = false;  
 
                     Destroy(this.gameObject,3.0f);
                     

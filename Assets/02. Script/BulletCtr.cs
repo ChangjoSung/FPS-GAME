@@ -30,7 +30,7 @@ public class BulletCtr : MonoBehaviour
         {
             case "ENEMY":
             {
-                monsterCtrl.MonsterHp -= PlayCtr.PlayerAttack;
+                other.GetComponent<MonsterCtrl>().MonsterHp -= PlayCtr.PlayerAttack;
                 
                 Destroy(this.gameObject);
                 break;
@@ -42,7 +42,7 @@ public class BulletCtr : MonoBehaviour
                 Destroy(this.gameObject);
                 break;
             }
-
+            
             
 
             default :

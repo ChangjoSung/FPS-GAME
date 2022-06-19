@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class PlayCtr : MonoBehaviour
 {
+    public delegate void playerDieHandler();
+    public static event playerDieHandler OnPlayerDie;
+    
     public GameObject[] bulletsUI;
     Image Hpbar;
     
@@ -174,13 +177,22 @@ public class PlayCtr : MonoBehaviour
     {
         Hpbar.fillAmount = nowHp / PlayerHp;
     }
+    
     void Die() 
     {
-        if(PlayerHp <= 0)
+        if(nowHp <= 0)
         {
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
+            
+            playerDie();
         }
     }
+    
+    void playerDie()
+    {
+        OnPlayerDie();
+    }
+
     
     void StopTowall()
     {
